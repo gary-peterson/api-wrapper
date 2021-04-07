@@ -22,35 +22,41 @@ Wrapper will provide:
 //Abbreviated (pseudo)
 
 UrlWrapper = require('url-wrapper').UrlWrapper;
-urlWrapper = new UrlWrapper(req.headers.host, req.url);
-path = urlWrapper.path();
-query = urlWrapper.query();
+urlw = UrlWrapper.fromRequest(req),
+path = urlw.path();
+query = urlw.query();
 width = query.width;
-height = query.height;
+height = query['height'];
 
 //-----------------------
 //Detailed
 
+//rec-form-server
+
 const
 	http = require('http'),
 	httpStatusCodes = require('http-status-codes'),	
-	UrlWrapper = require('url-wrapper').UrlWrapper;
+	UrlWrapper = require('url-wrapper').UrlWrapper,
 	port = 3000,
 	startupFct = () => console.log(`Server started on port: ${port}`),
 	br = '<br>';
 	
 const requestHandlerFct = (req, res) => {
 	res.writeHead(httpStatusCodes.OK, {'Content-Type': 'text/html'});		
-	const urlWrapper = new UrlWrapper(req.headers.host, req.url);
+	const 
+		urlw = UrlWrapper.fromRequest(req),
+		path = urlw.path(),
+		query = urlw.query();
 	res.write('received request ' + req.url + br);	
-	res.write('Path: ' + urlWrapper.path() + br);
-	res.write('Query params: ' + urlWrapper.queryAsString() + br);	
-	res.write('Query param pairs: ' + JSON.stringify(urlWrapper.query()));
+	res.write('URL Path: ' + path + br);
+	res.write('URL Query Param Pairs: ' + JSON.stringify(query) + br);
+	res.write('Width: ' + query.width + br);
+	res.write('Height: ' + query['height'] + br);
 	res.end();
 }	
 
 const server = http.createServer(requestHandlerFct);
-server.listen(port, startupFct);
+server.listen(port, startupFct);	
 
 ```
 

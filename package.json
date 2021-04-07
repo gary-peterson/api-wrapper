@@ -1,6 +1,6 @@
 {
 	"name": "url-wrapper",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "Minimal wrapper for URL type",
 	"keywords": [
 		"url",
