@@ -1,0 +1,25 @@
+{
+	"name": "url-wrapper",
+	"version": "1.0.2",
+	"description": "Minimal wrapper for URL type",
+	"keywords": [
+		"url",
+		"minimal"
+	],
+	"homepage": "",
+	"bugs": {
+		"url": "",
+		"email": ""
+	},
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gary-peterson/api-wrapper.git"
+	},
+	"author": "gp",
+	"license": "ISC",
+	"private": false
+}
