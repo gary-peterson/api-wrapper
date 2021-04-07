@@ -18,23 +18,39 @@ Wrapper will provide:
 ## Usage
 
 ```
-require 'url-wrapper'
+//-----------------------
+//Abbreviated (pseudo)
 
-//given a request object (var 'req')
-const urlWrapper = UrlWrapper.fromRequest(req);
+UrlWrapper = require('url-wrapper').UrlWrapper;
+urlWrapper = new UrlWrapper(req.headers.host, req.url);
+path = urlWrapper.path();
+query = urlWrapper.query();
+width = query.width;
+height = query.height;
 
-const path = urlWrapper.path();
+//-----------------------
+//Detailed
 
-const query = urlWrapper.query();
-//use query params
 const
-	w = query.width,
-	h = query.height;
+	http = require('http'),
+	httpStatusCodes = require('http-status-codes'),	
+	UrlWrapper = require('url-wrapper').UrlWrapper;
+	port = 3000,
+	startupFct = () => console.log(`Server started on port: ${port}`),
+	br = '<br>';
 	
-//or use query['width'], ...
+const requestHandlerFct = (req, res) => {
+	res.writeHead(httpStatusCodes.OK, {'Content-Type': 'text/html'});		
+	const urlWrapper = new UrlWrapper(req.headers.host, req.url);
+	res.write('received request ' + req.url + br);	
+	res.write('Path: ' + urlWrapper.path() + br);
+	res.write('Query params: ' + urlWrapper.queryAsString() + br);	
+	res.write('Query param pairs: ' + JSON.stringify(urlWrapper.query()));
+	res.end();
+}	
 
-//or array of pairs
-const queryParams = urlWrapper.queryAsArray();
+const server = http.createServer(requestHandlerFct);
+server.listen(port, startupFct);
 
 ```
 
