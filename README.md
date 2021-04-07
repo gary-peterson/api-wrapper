@@ -3,9 +3,7 @@
 
 ## Overview
 
-Wraps the somewhat complex node URL global object.
-
-Wrapper is constructed with request object.
+A little wrapper on the URL global object, to ease the interface when only interested in url path and query params.
 
 Given full url of:
 
