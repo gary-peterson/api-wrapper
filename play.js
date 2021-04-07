@@ -3,7 +3,7 @@
 const
 	http = require('http'),
 	httpStatusCodes = require('http-status-codes'),	
-	UrlWrapper = require('./url-wrapper').UrlWrapper;
+	UrlWrapper = require('./index').UrlWrapper;
 	port = 3000,
 	startupFct = () => console.log(`Server started on port: ${port}`),
 	br = '<br>';

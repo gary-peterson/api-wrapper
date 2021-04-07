@@ -1,6 +1,6 @@
 {
 	"name": "url-wrapper",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Minimal wrapper for URL type",
 	"keywords": [
 		"url",
@@ -11,7 +11,8 @@
 		"url": "",
 		"email": ""
 	},
-	"main": "main.js",
+	"main": "index.js",
+	"module": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -21,5 +22,6 @@
 	},
 	"author": "gp",
 	"license": "ISC",
-	"private": false
+	"private": false,
+	"devDependencies": {}
 }
